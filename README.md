@@ -1,5 +1,5 @@
-# JPEGvault_smartcontracts
-This repo is holding all the JPEGvault smart contract
+# JPEGvault Smart Contracts
+This repo is holding all the JPEGvault smart contracts
 
 Smart contract addresses on mainnet (ETH)
 
