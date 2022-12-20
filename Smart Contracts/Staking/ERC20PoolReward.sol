@@ -23,7 +23,7 @@ contract ERC20PoolReward is BaseReward {
     uint private lastUpdate;
     uint private tokenPerSecond;
 
-    event Claimed(address to, uint amount);
+    event Claimed(address indexed to, uint amount);
     event Distribute(address _token, uint _amount, uint _startDate, uint _endDate);
 
     constructor(address _stakingContract, address owner)
@@ -35,6 +35,7 @@ contract ERC20PoolReward is BaseReward {
       require(_amount > 0, "Invalid amount");
       require(_endDate > _startDate, "End < Start");
       require(block.timestamp <= _startDate, "Now > Start");
+      require(stakingContract.isRewardContractConnected(address(this)), 'Not connected');
 
       token = IERC20(_token);
       totalAmount = _amount;
@@ -58,6 +59,16 @@ contract ERC20PoolReward is BaseReward {
         users[msg.sender].claimed += _claimable;
       }
       emit Claimed(msg.sender, _claimable);
+    }
+
+    function compound() external whenNotPaused {
+      uint _claimable = claimable(msg.sender) ;
+      if (_claimable > 0){
+        require(address(token) == address(stakingContract.stakedToken()), "Same tokens");
+        token.approve(address(stakingContract), _claimable);
+        stakingContract.compound(msg.sender, uint128(_claimable));
+        users[msg.sender].claimed += _claimable;
+      }
     }
 
     function updateWeight(address _investor, uint oldWeight, uint oldTotalWeight, uint newWeight)
@@ -105,6 +116,6 @@ contract ERC20PoolReward is BaseReward {
 
     // Can rescue the funds if needed
     function rescueFunds() external onlyOwner {
-      token.transfer(owner(), token.balanceOf(address(this)));
+      super.rescueToken(address(token));
     }
 }

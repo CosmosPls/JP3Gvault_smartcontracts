@@ -1,14 +1,9 @@
-# JPEGvault Smart Contracts
-This repo is holding all the JPEGvault smart contracts
+# JP3Gvault Smart Contracts
+This repo is holding all the JP3Gvault smart contracts
 
-==== V2 Smart contract addresses on mainnets (ETH/BSC) ====
+You'll find here: 
 
-Token smart contract on ETH and BSC : 0x4BFcE5A1aCC3B847AFa9579bA91DA33b08e66fb7
-IDO smart contract on ETH : 0x51c2bb323F853511D6b42001e78Bc7310e055E35
-IDO smart contract on BSC : 0x774f872cce139278251be83439b0448af697cae1
-
-==== Old Smart contract addresses on mainnet (ETH) ====
-
-Token smart contract : 0xf4d294931B7F22Ba5A9f3Ed932E6CAfc21805E48 Redistribution smart contract : 0x33B0c076E27c4C273a2cfa5f683591f2C101F913 Presale smart contract : 0xA51BBb420552572d6D54f211CC54B951581b147A
-
-Here for the doc : https://github.com/CosmosPls/JPEGvault_smartcontracts/blob/main/JPEGvault%20-%20Smart%20contracts%20documentation.pdf
+Token smart contract, deployed at: 0x4BFcE5A1aCC3B847AFa9579bA91DA33b08e66fb7
+Staking smart contract, deployed at: 0x0f6297Bf8fBcfA704Da0D6d45440a5d857879192
+Dividend smart contract (for wETH redistribution), deployed at: 0x211524938f670659dbC3c7604EFfC86b4168B792
+Pool reward smart contract (for monthly JP3G rewards), renewed every month.
